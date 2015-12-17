@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.10/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-strap/1.0.3/vue-strap.min.js"></script>
+</head>
+<body>
+<div id="app">
+
+<button class="btn btn-default btn-lg"
+      v-on="click:showRight = !showRight">
+      Click to toggle alert on right
+</button>
+
+<alert
+  show="{{showRight}}"
+  duration="3000"
+  type="success"
+  width="400px"
+  placement="top-right"
+  dismissable>
+  <span class="icon-ok-circled alert-icon-float-left"></span>
+  <strong>Well Done!</strong>
+  <p>You successfully read this important alert message.</p>
+</alert>
+<p>
+  -
+  </p>
+
+<button
+    class="btn btn-success btn-lg"
+    v-on="click:showR = true">Show Aside on right</button>
+
+<sidebar :show.sync="showR" placement="right" header="Title" :width="350">
+<p>
+  hello
+  </p>
+</sidebar>
+
+  <tabs>
+  <tab header="one">
+      <v-select multiple limit="2">
+        <v-option value="Apple"></v-option>
+        <v-option value="Banana"></v-option>
+        <v-option value="Cherry"></v-option>
+      </v-select>
+  </tab>
+  <tab header="two">
+    ..2
+    <p>{{ message }}</p>
+    <input v-model="message">
+
+  </tab>
+  <tab header="three">
+    {{ message }}
+  </tab>
+  <tab header="four" disabled>
+    ...4
+  </tab>
+</tabs>
+</div>
+<script>
+new Vue({
+      el: '#app',
+      data: {
+				message: 'Hello Vue.js!'
+  		},
+      components: {
+        'alert': VueStrap.alert,
+        'aside': VueStrap.aside,
+        'button': VueStrap.button,
+        'sidebar': VueStrap.aside,
+        'tabs': VueStrap.tabset,
+        'tab': VueStrap.tab,
+        'vSelect': VueStrap.select,
+        'vOption': VueStrap.option
+      }
+    })
+</script>
+</body>
+</html>
